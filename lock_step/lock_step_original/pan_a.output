@@ -1,0 +1,47 @@
+
+(Spin Version 6.5.2 -- 6 December 2019)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (upEventually)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 68 byte, depth reached 23, errors: 0
+       55 states, stored
+       57 states, matched
+      112 transitions (= stored+matched)
+       80 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.005	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.278	actual memory usage for states
+  128.000	memory used for hash table (-w24)
+    0.534	memory used for DFS stack (-m10000)
+  128.730	total actual memory usage
+
+
+unreached in proctype Go
+	lock_step.pml:38, state 25, "startLoader = 0"
+	lock_step.pml:50, state 31, "-end-"
+	(2 of 31 states)
+unreached in proctype Lamp
+	lock_step.pml:76, state 23, "-end-"
+	(1 of 23 states)
+unreached in proctype Player
+	lock_step.pml:102, state 25, "-end-"
+	(1 of 25 states)
+unreached in proctype Loader
+	lock_step.pml:127, state 25, "-end-"
+	(1 of 25 states)
+unreached in proctype User
+	lock_step.pml:139, state 8, "-end-"
+	(1 of 8 states)
+unreached in claim upEventually
+	_spin_nvr.tmp:8, state 10, "(!(upPerformed))"
+	_spin_nvr.tmp:10, state 13, "-end-"
+	(2 of 13 states)
+
+pan: elapsed time 0 seconds

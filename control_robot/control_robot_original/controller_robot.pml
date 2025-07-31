@@ -6,13 +6,20 @@ active proctype User ()
 {
 end:
     do
-    :: nfull(toControl) -> progress_user1: toControl ! StartButton
-    :: nfull(toControl) -> progress_user2: toControl ! StartButton -> 
-       if
-       :: nfull(toControl) -> toControl ! StopButton
-       :: full(toControl)
-       fi
-    :: full(toControl)
+
+    // With guard
+    //:: nfull(toControl) -> progress_user1: toControl ! StartButton
+    //:: nfull(toControl) -> progress_user2: toControl ! StartButton -> 
+       //if
+       //:: nfull(toControl) -> toControl ! StopButton
+       //:: full(toControl)
+       //fi
+    //:: full(toControl)
+
+
+    //// Without guard
+    :: toControl ! StartButton
+    :: toControl ! StartButton -> toControl ! StopButton
     od
 }
 
@@ -33,9 +40,9 @@ active proctype Controller()
     :: atomic{ toControl ? msg ->
     if
     :: (msg == StopButton) -> toRobot ! Stop
-    :: (msg == Terminate) -> printf("Display (end)(n");
+    :: (msg == Terminate) -> printf("Display (end)\n");
                             goto Inactive
-    :: (msg == ErrorNotify) -> printf("Display (error)(n");
+    :: (msg == ErrorNotify) -> printf("Display (error)\n");
                                 goto Inactive
     :: (msg == StartButton)
     fi }

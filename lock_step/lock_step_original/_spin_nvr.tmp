@@ -1,0 +1,11 @@
+never upEventually {    /* !([] ((! (upIssued)) || (<> (upPerformed)))) */
+T0_init:
+	do
+	:: (! ((! (upIssued))) && ! ((upPerformed))) -> goto accept_S4
+	:: (1) -> goto T0_init
+	od;
+accept_S4:
+	do
+	:: (! ((upPerformed))) -> goto accept_S4
+	od;
+}

@@ -1,0 +1,25 @@
+  1:	proc  0 (User:1) controller_robot.pml:21 (state 1)	[toControl!StartButton]
+  2:	proc  1 (Controller:1) controller_robot.pml:32 (state 1)	[toControl?msg]
+  3:	proc  1 (Controller:1) controller_robot.pml:34 (state 2)	[((msg==StartButton))]
+  4:	proc  1 (Controller:1) controller_robot.pml:34 (state 3)	[toRobot!Start]
+  5:	proc  2 (Robot:1) controller_robot.pml:55 (state 1)	[toRobot?Start]                                         <-- RobotはActionに入ったあとは動作しない
+  6:	proc  0 (User:1) controller_robot.pml:22 (state 2)	[toControl!StartButton]
+  7:	proc  1 (Controller:1) controller_robot.pml:47 (state 26)	[(toControl?[StartButton])]
+  8:	proc  1 (Controller:1) controller_robot.pml:47 (state 27)	[toControl?StartButton]
+  9:	proc  0 (User:1) controller_robot.pml:22 (state 3)	[toControl!StopButton]
+ 10:	proc  1 (Controller:1) controller_robot.pml:41 (state 12)	[((toControl?[StopButton]&&nfull(toRobot)))]
+ 11:	proc  1 (Controller:1) controller_robot.pml:41 (state 13)	[toControl?StopButton]
+ 12:	proc  1 (Controller:1) controller_robot.pml:41 (state 14)	[toRobot!Stop]                                 <-- ControllerはStopButtonを受け取ってtoRobotにStopを送信
+ 13:	proc  0 (User:1) controller_robot.pml:22 (state 2)	[toControl!StartButton]                                  
+ 14:	proc  1 (Controller:1) controller_robot.pml:47 (state 26)	[(toControl?[StartButton])]
+ 15:	proc  1 (Controller:1) controller_robot.pml:47 (state 27)	[toControl?StartButton]
+ 16:	proc  0 (User:1) controller_robot.pml:22 (state 3)	[toControl!StopButton]                                <-- UserがtoControlをStopButtonで埋めると、ControllerはStopButtonを受け取りたいがtoRobotが詰まってるから動けない、RobotはStopを受け取りたいがtoControlが詰まっているから動けないという状況になる。
+
+spin: trail ends after 16 steps
+#processes: 3
+		queue 1 (toControl): [StopButton]
+		queue 2 (toRobot): [Stop]
+ 16:	proc  2 (Robot:1) controller_robot.pml:60 (state 18)
+ 16:	proc  1 (Controller:1) controller_robot.pml:40 (state 29)
+ 16:	proc  0 (User:1) controller_robot.pml:8 (state 4) <valid end state>
+3 processes created

@@ -1,0 +1,50 @@
+
+(Spin Version 6.5.2 -- 6 December 2019)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (upEventually)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 68 byte, depth reached 128, errors: 0
+      208 states, stored
+      187 states, matched
+      395 transitions (= stored+matched)
+      566 atomic steps
+hash conflicts:         0 (resolved)
+
+Stats on memory usage (in Megabytes):
+    0.019	equivalent memory usage for states (stored*(State-vector + overhead))
+    0.277	actual memory usage for states
+  128.000	memory used for hash table (-w24)
+    0.534	memory used for DFS stack (-m10000)
+  128.730	total actual memory usage
+
+
+unreached in proctype Go
+	lock_step.pml:50, state 28, "-end-"
+	(1 of 28 states)
+unreached in proctype Lamp
+	lock_step.pml:74, state 23, "-end-"
+	(1 of 23 states)
+unreached in proctype Player
+	lock_step.pml:91, state 16, "upPerformed = 1"
+	lock_step.pml:99, state 28, "-end-"
+	(2 of 28 states)
+unreached in proctype Loader
+	lock_step.pml:123, state 25, "-end-"
+	(1 of 25 states)
+unreached in proctype User
+	lock_step.pml:133, state 5, "currentEV = up"
+	lock_step.pml:134, state 7, "currentEV = upM"
+	lock_step.pml:134, state 8, "upIssued = 1"
+	lock_step.pml:141, state 18, "-end-"
+	(4 of 18 states)
+unreached in claim upEventually
+	_spin_nvr.tmp:8, state 10, "(!(upPerformed))"
+	_spin_nvr.tmp:10, state 13, "-end-"
+	(2 of 13 states)
+
+pan: elapsed time 0 seconds
